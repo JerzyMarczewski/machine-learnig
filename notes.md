@@ -49,3 +49,69 @@ metodę LASSO lub elastycznej siatki, ponieważ, jak już wiemy, dążą one do 
 mniej użytecznych cech. Generalnie bardziej preferowana jest metoda elastycznej siatki, gdyż
 metoda LASSO zaczyna nieprawidłowo działać, gdy liczba cech przewyższa liczbę próbek uczą-
 cych lub gdy istnieje silna korelacja pomiędzy kilkoma cechami.
+
+### p.158
+
+Klasa LinearSVC regularyzuje punkt obciążenia, dlatego należy najpierw wyśrod-
+kować zbiór uczący, odejmując od niego wartość średnią. Jeżeli skalujemy dane za
+pomocą klasy StandardScaler, proces ten jest przeprowadzany automatycznie.
+Ponadto wyznacza wartość hinge w hiperparametrze loss, gdyż nie jest ona domyślna.
+Na koniec, uzyskasz lepszą wydajność, jeśli wstawisz wartość False do hiperpara-
+metru dual, chyba że w zestawie uczącym znajduje się więcej cech niż przykładów
+(w dalszej części rozdziału przyjrzymy się uważniej dualności).
+
+### p.184
+
+Mam nadzieję, że dostrzegasz już olbrzymi potencjał drzew decyzyjnych: są zrozumiałe i łatwe do
+interpretacji, przystępne, wszechstronne i wydajne. Mają jednak kilka ograniczeń. Po pierwsze, jak
+pewnie zdążyłaś/zdążyłeś zauważyć, algorytm drzewa decyzyjnego uwielbia ortogonalne granice decy-
+zyjne (wszystkie podziały są przeprowadzane prostopadle do osi odciętych), przez co model ten
+jest wrażliwy na rotację zbioru uczącego. Na przykład rysunek 6.7 przedstawia prosty, liniowo roz-
+dzielny zestaw danych: na lewym wykresie próbki są z łatwością rozdzielane, natomiast na prawym
+wykresie te same dane zostały obrócone o 45° i granica decyzyjna jest tu niepotrzebnie skomplikowana.
+Pomimo tego, że drzewo decyzyjne zostało perfekcyjnie dopasowane do danych, istnieje duże ryzyko,
+że model ten nie będzie zbyt dobrze przeprowadzał uogólniania. Jednym ze sposobów ograniczenia
+tego problemu jest wprowadzenie algorytmu analizy głównych składowych (PCA; patrz rozdział 8.),
+dzięki któremu model staje się lepiej zorientowany wobec danych uczących.
+
+### p.187
+
+Załóżmy, że zadajesz skomplikowane pytanie tysiącom losowo dobranych osób, a następnie łączysz
+uzyskane odpowiedzi. W wielu przypadkach okazuje się, że taka zbiorcza odpowiedź jest lepsza
+od opinii eksperta. Jest to tak zwana mądrość tłumu. Podobne zjawisko następuje, gdy połączymy
+przewidywania grupy predyktorów (np. klasyfikatorów albo regresorów) — często otrzymamy w ten
+sposób lepsze prognozy niż uzyskane przez najlepszy pojedynczy model. Grupę predyktorów nazy-
+wamy zespołem (ang. ensemble), zatem omawiana technika nosi miano uczenia zespołowego
+(ang. ensemble learning), a używany w niej algorytm — metody uczenia zespołowego (ang. ensemble
+learning method).
+
+### p.187
+
+Bardzo prostą metodą uzyskania jeszcze lepszego klasyfikatora jest połączenie prognoz wyliczanych
+przez poszczególne klasyfikatory i wybranie klasy, która uzyskała najwięcej głosów. Klasyfikator
+wykorzystujący mechanizm głosowania większościowego jest nazywamy klasyfikatorem głosującym
+większościowo
+
+### p.189
+
+Metody zespołowe sprawują się najlepiej, gdy poszczególne predyktory są od siebie
+w jak największym stopniu uniezależnione. Jednym ze sposobów osiągnięcia tego
+stanu jest uczenie klasyfikatorów za pomocą odmiennych algorytmów. Zwiększamy
+w ten sposób prawdopodobieństwo, że klasyfikatory te będą popełniały zupełnie
+różne rodzaje błędów, co prowadzi do poprawienia dokładności zespołu.
+
+### p.190
+
+Gdy próbkowanie jest przeprowadzane ze zwracaniem (ang. sampling with replacement), mechanizm
+ten jest nazywany agregacją1 (ang. bagging; nazwa jest skrótem angielskiego pojęcia bootstrap aggre-
+gating2, czyli agregacja przykładów wstępnych). Z kolei jeśli próbkowanie jest przeprowadzane bez
+zwracania (ang. sampling without replacement), to mamy do czynienia z wklejaniem3 (ang. pasting).
+
+### p.194
+
+Rozwiązanie to okazuje się szczególnie przydatne, gdy zajmujemy się wielowymiarowymi zbiorami
+danych (np. obrazami). Proces próbkowania zarówno przykładów uczących, jak i cech nosi nazwę
+metody rejonów losowych7 (ang. random patches method). Z kolei pozostawienie przykładów uczą-
+cych (np. bootstrap=False i max_samples=1.0) przy jednoczesnym próbkowaniu samych cech
+(np. bootstrap_features=True i/lub wartość max_features mniejsza od 1.0) to tak zwana metoda
+podprzestrzeni losowych8 (ang. random subspaces method).
