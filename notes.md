@@ -115,3 +115,45 @@ metody rejonów losowych7 (ang. random patches method). Z kolei pozostawienie pr
 cych (np. bootstrap=False i max_samples=1.0) przy jednoczesnym próbkowaniu samych cech
 (np. bootstrap_features=True i/lub wartość max_features mniejsza od 1.0) to tak zwana metoda
 podprzestrzeni losowych8 (ang. random subspaces method).
+
+### p.197
+
+AdaBoost
+
+Nowy predyktor może korygować swojego poprzednika poprzez zwracanie większej uwagi na przy-
+kłady uczące, dla których poprzedni algorytm pozostał niedotrenowany. W ten sposób kolejne
+predyktory koncentrują się coraz bardziej na najtrudniejszych przypadkach. Właśnie ta technika
+jest wdrażana przez algorytm AdaBoost.
+
+Przykładowo, w celu stworzenia klasyfikatora AdaBoost pierwszy klasyfikator bazowy (taki jak
+drzewo decyzyjne) zostaje wytrenowany i użyty do uzyskania prognoz dla zbioru uczącego. Teraz
+następuje zwiększenie względnej wagi nieprawidłowo sklasyfikowanych próbek uczących. Drugi kla-
+syfikator jest uczony za pomocą zaktualizowanych wag, wylicza predykcje dla zbioru uczącego,
+wagi zostają zaktualizowane itd. (rysunek 7.7).
+
+### p.200
+
+gradient boosting
+
+Inną bardzo popularną techniką wzmacniania jest wzmacnianie gradientowe. Podobnie jak algo-
+rytm AdaBoost, wzmacnianie gradientowe dodaje kolejne predyktory do zespołu w sposób sekwen-
+cyjny, gdzie każdy następny poprawia poprzednika. Jednak nie aktualizujemy tu wag przykładów
+po każdym przebiegu, lecz próbujemy dopasować predyktor do błędu resztowego (ang. residual error)
+popełnionego przez poprzedni predyktor.
+
+### p.209
+
+Wiele problemów uczenia maszynowego obejmuje tysiące, a nawet miliony cech opisujących każdy
+przykład uczący. Z tego powodu proces uczenia nie tylko przebiega bardzo powoli, ale, jak się wkrótce
+przekonamy, utrudnia również znalezienie dobrego rozwiązania. Problem ten jest często nazywany
+klątwą wymiarowości (ang. curse of dimensionality).
+
+### p.211
+
+W teorii jednym z rozwiązań klątwy wymiarowości mogłoby być zwiększenie zbioru danych uczących
+w celu osiągnięcia wystarczającej gęstości przestrzeni danych. Niestety, w praktyce oznacza to, że liczba
+przykładów wymaganych do osiągnięcia zakładanej gęstości wzrasta wykładniczo wraz z liczbą
+wymiarów. Przy 100 wymiarach (znacznie mniej, niż znajduje się w zbiorze danych MNIST) w celu
+wyuczenia próbek znajdujących się średnio w odległości 0,1 od siebie (przy założeniu, że są one
+równomiernie rozmieszczone we wszystkich wymiarach) wymagana byłaby liczba przykładów prze-
+kraczająca liczbę atomów znajdujących się w obserwowalnym Wszechświecie4
