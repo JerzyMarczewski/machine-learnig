@@ -156,4 +156,13 @@ przykładów wymaganych do osiągnięcia zakładanej gęstości wzrasta wykładn
 wymiarów. Przy 100 wymiarach (znacznie mniej, niż znajduje się w zbiorze danych MNIST) w celu
 wyuczenia próbek znajdujących się średnio w odległości 0,1 od siebie (przy założeniu, że są one
 równomiernie rozmieszczone we wszystkich wymiarach) wymagana byłaby liczba przykładów prze-
-kraczająca liczbę atomów znajdujących się w obserwowalnym Wszechświecie4
+kraczająca liczbę atomów znajdujących się w obserwowalnym Wszechświecie
+
+### p.213
+
+Wiele algorytmów redukcji wymiarowości działa poprzez modelowanie rozmaitości, na której znaj-
+dują się próbki uczące; jest to proces uczenia rozmaitościowego (ang. manifold learning). Wykorzy-
+stywane jest w nim założenie rozmaitości (ang. manifold assumption), zwane także hipotezą
+rozmaitości (ang. manifold hypothesis), zgodnie z którą większość rzeczywistych, wielowymiarowych
+zbiorów danych znajduje się blisko rozmaitości składającej się ze znacznie mniejszej liczby wymiarów.
+Założenie to jest bardzo często obserwowane empirycznie.
